@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Merriweather:wght@400;700&family=Oswald:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Coiny&family=Titan+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=Sriracha&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
@@ -7,13 +8,16 @@
     box-sizing: border-box;
 }
 :root{
-    --color-pink: #feecea;
-    --color-white: #fff;
+    --color-primary-green: #4b5636;
+    --color-accent-orange: #d3773d;
+    --color-charcoal: #36454f;
+    --color-cream: #f8f8f8;
     --color-black: #333;
-    --color-text-pink: #FF7882;
-    --color-heart: #FF7882;
-    --color-bg-letter: #fff8e4;
-    --color-border: #DACCBF;
+    --color-border: #4b3025;
+    --color-bg-letter: #e6e6fa;
+    --color-image-border: #9d7c5b;
+    --color-bg-images: #35261c;
+    --color-shadow: rgba(0, 0, 0, 0.4);
 }
 html{
     height: 100%;
@@ -24,14 +28,16 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-image:linear-gradient(var(--color-pink), var(--color-pink));
+    background-color: var(--color-primary-green);
 }
 #wrapper{
     position: relative;
     background-color: transparent;
-    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255,1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1) 76%, transparent 77%, transparent);
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1) 76%, transparent 77%, transparent), 
+                      linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.1) 75%, rgba(255, 255, 255, 0.1) 76%, transparent 77%, transparent);
+    background-size: 80px 80px;
+    background-blend-mode: overlay, overlay;
     height:100%;
-    background-size:80px 80px;
     overflow: hidden;
     z-index: 1;
 }
@@ -52,6 +58,10 @@ body {
 .flag__birthday .flag__right{
     transform: rotate(10deg) translate(20px,30px) scaleX(-1);
 }
+.flag__birthday img {
+    filter: invert(15%) sepia(80%) saturate(400%) hue-rotate(-25deg) brightness(110%) contrast(120%);
+}
+
 .content{
     width: 100%;
     position: relative;
@@ -73,18 +83,20 @@ body {
 }
 .left .btn{
     transform: scale(0);
-    animation: scaleCricle 2s 16s forwards ease-in-out;
+    animation: scaleCircle 2s 16s forwards ease-in-out;
 }
 #btn__letter{
     position: relative;
     margin-top: 30px;
-    background-color: var(--color-text-pink);
+    background-color: var(--color-border);
     outline: none;
     padding: 5px 15px;
     font-size: 1rem;
     border-radius: 50px;
-    border: 3px solid var(--color-black);
+    border: 3px solid var(--color-bg-images);
     font-family: "Sriracha", cursive;
+    font-weight: 600;
+    color: var(--color-cream);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,18 +110,19 @@ body {
 }
 #btn__letter i{
     margin-left: 5px;
+    color: var(--color-cream)
 }
 #btn__letter:hover{
-    border-color: var(--color-heart);
-    background-color: var(--color-heart);
-    color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-color: var(--color-charcoal);
+    background-color: var(--color-charcoal);
+    color: var(--color-cream);
+    box-shadow: var(--color-shadow) 0px 3px 8px;
 }
 
 #btn__letter:hover i{
-    animation: rotateHeart 1s infinite linear;
+    animation: rotateIcon 1s infinite linear;
 }
-@keyframes rotateHeart{
+@keyframes rotateIcon{
     0%,50%, 100%{
         transform: rotate(0deg);
     }
@@ -142,7 +155,7 @@ body {
     justify-content: center;
 }
 .title .happy{
-    color: var(--color-white);
+    color: var(--color-cream);
 }
 .title .happy span, .title .birthday span{
     transform: translateY(50px);
@@ -158,7 +171,7 @@ body {
     }
 }
 .title .birthday{
-    color: var(--color-text-pink);
+    color: var(--color-accent-orange);
 }
 
 .title .hat{
@@ -169,6 +182,12 @@ body {
     z-index: -1;
     animation: topHat 4s 7s forwards ease;
 }
+
+.title .hat img {
+    filter: hue-rotate(-25deg) sepia(80%) saturate(200%) brightness(0.9);
+}
+
+
 @keyframes topHat{
     20%, 30%{
         top: -30px;
@@ -184,14 +203,15 @@ body {
     display: flex;
     justify-content:space-around;
     align-items: center;
-    background-color: var(--color-text-pink);
+    background-color: var(--color-accent-orange);
+    color: black;
     border-radius: 50px;
     margin-top: 20px;
     font-family: "Sriracha", cursive;
     
 }
 .date__of__birth{
-    border: 3px solid var(--color-black);
+    border: 3px solid var(--color-bg-images);
     position: relative;
     transform: translateY(-100px);
     z-index: -1;
@@ -227,8 +247,10 @@ body {
     position: absolute;
     padding: 0px 20px;
     bottom: -20px;
-    border: 3px solid var(--color-black);
+    border: 3px solid var(--color-bg-images);
     font-family: 'Dancing Script', cursive;
+    background-color: var(--color-border);
+    color: var(--color-cream);
 }
 .date__of__birth span, .name span{
     font-weight: bold;
@@ -258,14 +280,15 @@ body {
     overflow: hidden;
     display: flex;
     align-items: center;
-    border: 6px solid var(--color-black);
+    border: 6px solid var(--color-image-border);
+    box-shadow: 0px 5px 15px var(--color-shadow);
 }
 .content .right .image img{
     width: 100%;
     object-fit: cover;
 
 }
-.cricle{
+.circle{
     position: absolute;
     top: 20px;
     right: 50px;
@@ -273,9 +296,9 @@ body {
     justify-content: center;
     align-items: center;
     transform: scale(0);
-    animation: scaleCricle 3s 15s forwards ease-in-out;
+    animation: scaleCircle 3s 15s forwards ease-in-out;
 }
-@keyframes scaleCricle {
+@keyframes scaleCircle {
     0%{
         transform: scale(0);
     }
@@ -290,75 +313,74 @@ body {
     }
 
 }
-.text__cricle{
+.text__circle{
     width: 100px;
     height: 100px;
-    background-color: var(--color-text-pink);
+    background-color: var(--color-accent-orange);
     border-radius: 50%;
-    border: 5px solid var(--color-black);
+    border: 5px solid var(--color-bg-images);
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: rotateCricle 5s linear infinite;
+    animation: rotateCircle 5s linear infinite;
 }
-@keyframes rotateCricle{
+@keyframes rotateCircle{
     to{
         transform: rotate(360deg);
     }
 }
-.text__cricle span{
+.text__circle span{
     top: 0%;
     left: 50%;
     position: absolute;
-    color: var(--color-black);
+    color: var(--color-bg-images);
     transform: rotate(calc(var(--i) * 24deg));
     transform-origin: 0 45px;
     font-family: "Sriracha", cursive;
     text-transform: uppercase;
     font-size: 0.7rem;
 }
-.fa-heart{
-    color: var(--color-heart);
-    filter: drop-shadow(0 0 3px var(--color-heart));
-    animation: scaleHeart 1s infinite linear;
-}
-.cricle .fa-heart{
+
+.circle .mountain{
     position: absolute;
     transform: scale(0.85);
 }
-@keyframes scaleHeart{
+
+@keyframes scaleIcon{
     50%{
         transform: scale(1.2);
     }
 }
 .right .balloon_one{
     position: absolute;
-    top: -70px;
-    left: -70px;
+    top: -50px;
+    left: -110px;
     animation: balloon1 2s infinite linear;
 }
+
 @keyframes balloon1{
     0%, 50%,100%{
         transform-origin: bottom right;
-        transform: rotate(0deg);
+        transform: rotate(3deg);
     }
     25%{
         transform-origin: bottom right;
-        transform: rotate(3deg);
+        transform: rotate(6deg);
     }
     75%{
         transform-origin: bottom right;
-        transform: rotate(-3deg);
+        transform: rotate(0deg);
     }
 }
 .right .balloon_two{
     position: absolute;
     top: 170px;
-    right: -65px;
+    right: -85px;
     z-index: -1;
-    transform: rotate(10deg);
+    transform: rotate(20deg);
     animation: balloon2 2s infinite linear;
 }
+
 @keyframes balloon2 {
     0%,50%,100%{
         transform-origin: bottom left;
@@ -377,9 +399,9 @@ body {
 .decorate_star{
     position: absolute;
     transform: scale(0);
-    background-color: var(--color-black);
+    background-color: var(--color-bg-images);
     clip-path: polygon(0 50%, 35% 35%, 50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%);
-    animation: scaleCricle 3s var(--t) forwards, 
+    animation: scaleCircle 3s var(--t) forwards, 
             scaleStar 2s 16s infinite ease-in-out;
 }
 .decorate_star.star1{
@@ -424,34 +446,51 @@ body {
     position: absolute;
     right: 0;
     bottom: -10px;
+    filter: invert(15%) sepia(80%) saturate(400%) hue-rotate(-25deg) brightness(110%) contrast(120%);  
 }
 .decorate_flower--one{
     position: absolute;
     top: 250px;
     left: 50px;
     transform: scale(0);
-    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+    animation: scaleCircle 3s var(--t) forwards ease-in-out;
 }
 .decorate_flower--two{
     position: absolute;
     top: 225px;
     left: 540px;
     transform: scale(0);
-    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+    animation: scaleCircle 3s var(--t) forwards ease-in-out;
 }
 .decorate_flower--three{
     position: absolute;
     top: 150px;
     right: 235px;
     transform: scale(0);
-    animation: scaleCricle 3s var(--t) forwards ease-in-out;
+    animation: scaleCircle 3s var(--t) forwards ease-in-out;
+}
+.decorate_tree--one, .decorate_tree--two {
+    position: absolute;
+    transform: scale(0);
+    animation: scaleCircle 3s var(--t) forwards ease-in-out;
+    color: var(--color-bg-images);
+    font-size: 60px;
+}
+.decorate_tree--one{
+    top: 610px;
+    left: 400px;
+}
+.decorate_tree--two{
+    top: 610px;
+    right: 200px;
 }
 .smiley__icon{
     position: absolute;
     bottom: 180px;
     left: 600px;
     transform: scale(0);
-    animation: scaleCricle 3s 15s forwards ease-in-out;
+    animation: scaleCircle 3s 15s forwards ease-in-out;
+    filter: hue-rotate(-25deg) sepia(80%) saturate(200%) brightness(0.9);
 }
 
 
@@ -469,10 +508,10 @@ body {
     position: absolute;
     width: 55vw;
     height: 450px;
-    background-color: var(--color-white);
+    background-color: var(--color-cream);
     border-radius: 27px;
     padding: 17px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: var(--color-shadow) 0px 3px 8px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -484,12 +523,13 @@ body {
     top: -10px;
     width: 30px;
     height: 30px;
-    background-color: var(--color-white);
+    background-color: var(--color-charcoal);
+    color: var(--color-cream);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: var(--color-shadow) 0px 2px 8px 0px;
     cursor: pointer;
 }
 .letter__border .letter{
@@ -498,16 +538,19 @@ body {
     background-color: var(--color-bg-letter);
     border-radius: 10px;
     padding-top: 15px;
+    color: var(--color-charcoal);
 }
 .letter__border .letter .title__letter{
     text-align: center;
     font-family: 'Dancing Script', cursive;
     font-weight: bold;
     font-size: 2.4rem;
+    color: var(--color-accent-orange);
 }
 .title__letter .fa-solid{
     margin-left: 5px;
     font-size: 1.3rem;
+    color: var(--color-charcoal);
 }
 .letter__border .letter .content__letter{
     position: relative;
@@ -529,9 +572,9 @@ body {
     width: 100%;
 }
 #heart__letter.animationOp{
-    animation: opacityHeart 1s 1s forwards;
+    animation: opacityIcon 1s 1s forwards;
 }
-@keyframes opacityHeart{
+@keyframes opacityIcon{
     to{
         opacity: 1;
     }
@@ -539,11 +582,12 @@ body {
 .content__letter .left .heart{
     position: absolute;
     opacity: 0;
+    color: var(--color-accent-orange);
 }
 .content__letter .left .heart.animation{
-    animation: scaleHeartLetter 1s var(--t) infinite ease-in-out;
+    animation: scaleIconLetter 1s var(--t) infinite ease-in-out;
 }
-@keyframes scaleHeartLetter{
+@keyframes scaleIconLetter{
     0%{
         opacity: 1;
         transform: scale(0);
@@ -587,21 +631,25 @@ body {
     position: absolute;
     right: 20px;
     top: -100px;
+    filter: hue-rotate(200deg) saturate(1.5) brightness(0.8);
+
 }
 .love__img.animationOp{
-    animation: opacityHeart 1s 1s forwards;
+    animation: opacityIcon 1s 1s forwards;
 }
 .content__letter .right .text__letter{
     margin-top: 60px;
     padding: 20px 15px 10px 15px;
     font-family: 'Dancing Script', cursive;
     font-size: 1.3rem;
+    color: var(--color-charcoal);
 }
 .content__letter .right #mewmew{
     position: absolute;
     bottom: 0;
     right: 0;
     opacity: 0;
+    filter: hue-rotate(200deg) saturate(1.5) brightness(0.8);
 }
 #mewmew.animationOp{
     animation: opacityHeart 1s 1s forwards;
@@ -614,15 +662,16 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-size: 1rem;
+    color: var(--color-cream);
 }
 
 #copy a {
     text-decoration: none;
-    color: #191919d7;
+    color: var(--color-accent-orange);
 }
 
 #copy p {
-    color: #4275ff;
+    color: var(--color-cream);
     text-align: center;
     font-weight: 700;
     cursor: pointer;
@@ -667,7 +716,7 @@ body {
         position: relative;
         margin-top: 17px;
         width: 209px;
-        background-color: var(--color-text-pink);
+        background-color: var(--color-accent-orange);
         outline: none;
         padding: 6px 4px;
         font-size: 1rem;
@@ -679,11 +728,10 @@ body {
         justify-content: center;
         cursor: pointer;
         z-index: 2;
-        /* transform: scale(1); */
         transition: all .5s ease-in-out;
     }
 
-    .cricle {
+    .circle {
         position: absolute;
         top: 10px;
         right: -54px;
@@ -691,7 +739,7 @@ body {
         justify-content: center;
         align-items: center;
         transform: scale(0);
-        animation: scaleCricle 3s 15s forwards ease-in-out;
+        animation: scaleCircle 3s 15s forwards ease-in-out;
     }
 
     .title .hat {
@@ -707,10 +755,10 @@ body {
         position: absolute;
         width: 90vw;
         height: 315px;
-        background-color: var(--color-white);
+        background-color: var(--color-cream);
         border-radius: 27px;
         padding: 17px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        box-shadow: var(--color-shadow) 0px 3px 8px;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -723,6 +771,7 @@ body {
         background-color: var(--color-bg-letter);
         border-radius: 10px;
         padding-top: 15px;
+        color: var(--color-charcoal);
     }
 
     .letter__border .letter .title__letter {
@@ -730,6 +779,7 @@ body {
         font-family: 'Dancing Script', cursive;
         font-weight: bold;
         font-size: 1.4rem;
+        color: var(--color-accent-orange);
     }
 
     .letter__border .letter .content__letter {
@@ -746,6 +796,7 @@ body {
         padding: 20px 15px 10px 15px;
         font-family: 'Dancing Script', cursive;
         font-size: .8rem;
+        color: var(--color-charcoal);
     }
 
     .content__letter .right .love__img {
@@ -756,9 +807,7 @@ body {
     }
 
     .love__img img {
- 
             width: 84px;
-
     }
 
     .content .right .image {
@@ -769,7 +818,7 @@ body {
         overflow: hidden;
         display: flex;
         align-items: center;
-        border: 6px solid var(--color-black);
+        border: 6px solid var(--color-border);
     }
 
     .name {
@@ -796,11 +845,6 @@ body {
 
 
 }
-
-
-
-
-
 
 
 .boxMail{
@@ -836,7 +880,7 @@ body {
 }
 .boxMail .boxMail-container:hover{
     transform: rotate(-5deg);
-    filter: drop-shadow(0 0 10px #FF7882);
+    filter: drop-shadow(0 0 10px var(--color-accent-orange));
 }
 .boxMail .boxMail-container:hover .card1{
     transform: translate(-187px, -250px) rotateY(-140deg);
@@ -849,13 +893,13 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid black;
+    border: 1px solid var(--color-charcoal);
 }
 .boxMail .boxMail-container .card1 {
     position: absolute;
     width: 50%;
     height: 100%;
-    background: linear-gradient(to right, #FF7882, #FF7882 63%);
+    background: linear-gradient(to right, var(--color-charcoal), var(--color-charcoal) 63%);
     color: white;
     display: flex;
     justify-content: center;
@@ -868,15 +912,27 @@ body {
     transform-style: preserve-3d;
     transform-origin: left;
     transition: all 1s ease-in-out;
+    backface-visibility: hidden;
+}
+.boxMail .boxMail-container .card1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-charcoal);
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 .boxMail .boxMail-container .card1 .userImg{
     position: relative;
     width: 80px;
     height: 80px;
-    background-color: white;
+    background-color: var(--color-cream);
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid white;
+    border: 2px solid var(--color-cream);
     cursor: pointer;
     margin-bottom: 20px;
 }
@@ -895,8 +951,8 @@ body {
     line-height: 1.5;
     letter-spacing: 5px;
     transform: rotate(-5deg);
-    text-shadow: 0 0 5px white,
-                0 0 10px white;
+    text-shadow: 0 0 5px var(--color-cream),
+                0 0 10px var(--color-cream);
 }
 .boxMail .boxMail-container .card2{
     position: relative;
@@ -912,15 +968,15 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background-color: #FF7882;
+    background-color: var(--color-primary-green);
     transition: all 1s;
     overflow: hidden;
     font-family: "Inter", serif;
-    color: #fff;
+    color: var(--color-cream);
 }
 .boxMail .boxMail-container:hover .card2-content{
     transform: translate(20px, 20px);
-    box-shadow: -1px -1px 5px rgb(0, 0, 0, 0.4);
+    box-shadow: -1px -1px 5px var(--color-shadow);
 }
 .boxMail .boxMail-container .card2 h3{
     font-family: 'Dancing Script', cursive;
@@ -928,11 +984,10 @@ body {
     opacity: 0;
     visibility: hidden;
     font-size: 25px;
-    text-shadow: 0 0 8px #FF7882;
+    text-shadow: 0 0 8px var(--color-primary-green);
 }
-.boxMail .boxMail-container .card2:hover h3{
+.boxMail .boxMail-container:hover .card2 h3{
     animation: texth3 3s forwards;
-    animation-delay: 2s;
     transition: 1s;
 }
 @keyframes texth3{
@@ -954,9 +1009,8 @@ body {
     font-size: 22px;
     opacity: 0;
 }
-.boxMail .boxMail-container .card2:hover h2{
-    animation: texth2 2s forwards;
-    animation-delay: 4s;
+.boxMail .boxMail-container:hover .card2 h2{
+    animation: texth2 1s forwards;
     transition: 1s;
 }
 @keyframes texth2{
@@ -973,11 +1027,12 @@ body {
     left: 20px;
     opacity: 0;
     transition: 1s;
+    filter: hue-rotate(200deg) saturate(1.5) brightness(0.8);
+
 }
-.boxMail .boxMail-container .card2 .card2-content:hover .imageCute2{
+.boxMail .boxMail-container:hover .card2 .card2-content .imageCute2{
     animation: cute3 1s linear infinite,
                 cute4 3s 2s forwards;
-    animation-delay: 2s;
     transition: 1s;
 }
 @keyframes cute3{
@@ -1020,6 +1075,6 @@ body {
     font-size: 30px;
     padding: 10px 25px;
     cursor: pointer;
-    color: white;
+    color: var(--color-cream);
     z-index: 10000000000000000;
 }
